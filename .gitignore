@@ -3,3 +3,5 @@
 *.log
 cookies.txt
 .DS_Store
+
+logs/
