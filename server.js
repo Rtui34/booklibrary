@@ -184,13 +184,13 @@ app.get('/books', requireAuth, async (req, res) => {
 app.get('/books/create', requireAuth, (req, res) => res.render('create'));
 app.post('/books', requireAuth, async (req, res) => {
   try {
-    // sanitize inputs: if isbn is empty string or only whitespace, remove it
-    if (req.body && typeof req.body.isbn === 'string') {
-      const trimmed = req.body.isbn.trim();
-      if (!trimmed) delete req.body.isbn; else req.body.isbn = trimmed;
+    // validate required isbn
+    if (!req.body || typeof req.body.isbn !== 'string' || !req.body.isbn.trim()) {
+      return res.send('Error: ISBN is required. <a href="/books/create">Try again</a>');
     }
-    // ensure year is a number when provided
-    if (req.body && req.body.year) {
+    // sanitize isbn and year
+    req.body.isbn = req.body.isbn.trim();
+    if (req.body.year) {
       const y = parseInt(req.body.year);
       if (!Number.isNaN(y)) req.body.year = y; else delete req.body.year;
     }
@@ -213,6 +213,16 @@ app.get('/books/edit/:id', requireAuth, async (req, res) => {
 });
 app.post('/books/update/:id', requireAuth, async (req, res) => {
   try {
+    // validate isbn present
+    if (!req.body || typeof req.body.isbn !== 'string' || !req.body.isbn.trim()) {
+      return res.send('Error: ISBN is required for update. <a href="/books">Back</a>');
+    }
+    req.body.isbn = req.body.isbn.trim();
+    if (req.body.year) {
+      const y = parseInt(req.body.year);
+      if (!Number.isNaN(y)) req.body.year = y; else delete req.body.year;
+    }
+
     await Book.findByIdAndUpdate(req.params.id, req.body);
     res.redirect('/books');
   } catch (err) {

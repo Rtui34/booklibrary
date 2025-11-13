@@ -12,7 +12,7 @@
     <form method="POST" action="/books/update/<%= book._id %>">
       <input name="title" placeholder="Title" required value="<%= book.title %>"><br>
       <input name="author" placeholder="Author" required value="<%= book.author %>"><br>
-      <input name="isbn" placeholder="ISBN" value="<%= book.isbn || '' %>"><br>
+      <input name="isbn" placeholder="ISBN" required value="<%= book.isbn || '' %>"><br>
       <input name="year" type="number" placeholder="Year" value="<%= book.year || '' %>"><br>
       <input name="genre" placeholder="Genre" value="<%= book.genre || '' %>"><br>
       <button type="submit">Update Book</button>
