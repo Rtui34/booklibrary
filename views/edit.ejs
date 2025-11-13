@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Add Book</title>
+  <title>Edit Book</title>
   <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8">
 </head>
 <body>
   <div class="container">
-    <h1>Add New Book</h1>
+    <h1>Edit Book</h1>
     <a href="/books">← Back</a>
-    <form method="POST" action="/books">
-      <input name="title" placeholder="Title" required><br>
-      <input name="author" placeholder="Author" required><br>
-      <input name="isbn" placeholder="ISBN"><br>
-      <input name="year" type="number" placeholder="Year"><br>
-      <input name="genre" placeholder="Genre"><br>
-      <button type="submit">Save Book</button>
+    <form method="POST" action="/books/update/<%= book._id %>">
+      <input name="title" placeholder="Title" required value="<%= book.title %>"><br>
+      <input name="author" placeholder="Author" required value="<%= book.author %>"><br>
+      <input name="isbn" placeholder="ISBN" value="<%= book.isbn || '' %>"><br>
+      <input name="year" type="number" placeholder="Year" value="<%= book.year || '' %>"><br>
+      <input name="genre" placeholder="Genre" value="<%= book.genre || '' %>"><br>
+      <button type="submit">Update Book</button>
     </form>
   </div>
 </body>
