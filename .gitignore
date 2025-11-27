@@ -1,7 +1,23 @@
-﻿node_modules/
+node_modules/
 .env
 *.log
 cookies.txt
 .DS_Store
 
 logs/
+
+# Editor / OS
+.vscode/
+.idea/
+
+# npm / yarn debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env variants
+.env.local
+.env.*.local
+
+# Avoid committing zip packages
+*.zip
