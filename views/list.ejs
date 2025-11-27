@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h1>📚 Library Management</h1>
+            <div>
+                <span>Welcome, <b><%= user %></b></span>
+                <a href="/logout" class="btn btn-secondary">Logout</a>
+            </div>
+        </div>
+        <hr>
+
+        <div style="display:flex; justify-content:space-between; margin-bottom: 20px;">
+            <form action="/" method="GET" style="display:flex; gap:10px;">
+                <input type="text" name="search" placeholder="Search Title or Author..." value="<%= search || '' %>">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <% if(search) { %> <a href="/" class="btn btn-secondary">Reset</a> <% } %>
+            </form>
+            <a href="/create" class="btn btn-success">+ Add New Book</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (books.length === 0) { %>
+                    <tr><td colspan="5" style="text-align:center;">No books found.</td></tr>
+                <% } %>
+                <% books.forEach(book => { %>
+                <tr>
+                    <td><%= book.title %></td>
+                    <td><%= book.author %></td>
+                    <td><%= book.isbn %></td>
+                    <td>
+                        <span style="padding: 3px 8px; border-radius: 4px; background: <%= book.status === 'Available' ? '#d4edda' : '#f8d7da' %>; color: <%= book.status === 'Available' ? '#155724' : '#721c24' %>;">
+                            <%= book.status %>
+                        </span>
+                    </td>
+                    <td>
+                        <a href="/edit/<%= book._id %>" class="btn btn-primary">Edit</a>
+                        <a href="/delete/<%= book._id %>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

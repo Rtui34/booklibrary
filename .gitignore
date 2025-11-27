@@ -18,6 +18,3 @@ yarn-error.log*
 # Local env variants
 .env.local
 .env.*.local
-
-# Avoid committing zip packages
-*.zip

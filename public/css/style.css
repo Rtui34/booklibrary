@@ -1,0 +1,15 @@
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; margin: 0; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+h1, h2 { color: #2c3e50; }
+.btn { display: inline-block; padding: 8px 15px; text-decoration: none; border-radius: 5px; color: white; margin: 2px; border: none; cursor: pointer; }
+.btn-primary { background-color: #3498db; }
+.btn-danger { background-color: #e74c3c; }
+.btn-success { background-color: #2ecc71; }
+.btn-secondary { background-color: #95a5a6; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+th { background-color: #ecf0f1; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input, select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+.login-box { max-width: 400px; margin: 100px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
