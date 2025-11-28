@@ -8,7 +8,7 @@ const User = require('./models/User');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const MONGO_URI = process.env.MONGO_URI
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://kotw36547_mongdb:kotw36547@cluster0.pxofk4t.mongodb.net/booklib?retryWrites=true&w=majority';
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB Connected to booklib'))
