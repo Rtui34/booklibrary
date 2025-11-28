@@ -24,8 +24,6 @@ comp3810sef-group<no.>/
 
 - After register/login the app auto-logs-in and redirects to `/books`.
 
-Only authenticated users can access the web UI CRUD pages (`/`, `/create`, `/edit/:id`). The app uses `cookie-session` to store user session (cookie name `session`).
-
 Notes about accounts:
 - You can sign up via `/register` to create an account.
 - For testing/demo, you may create a test account manually in MongoDB or register using the app UI.
@@ -61,8 +59,3 @@ curl -X PUT -H "Content-Type: application/json" -d '{"title":"The Hobbit (Update
 
 # Delete
 curl -X DELETE https://booklibrary-uy04.onrender.com/login/<id>
-
-# Notes on protected UI endpoints (cookie required)
-# Use the browser for UI flows. To test UI endpoints with curl you must first login and capture cookies, e.g.:
-# 1) POST /login to get Set-Cookie
-# 2) Use the saved cookie with -b cookiefile when POSTing to /create or /edit
